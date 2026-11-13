@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audry Dupin — Portfolio BTS SIO SISR | Réseaux & Cybersécurité</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        dark: {
+                            950: '#070b14',
+                            900: '#0d1322',
+                            850: '#121a2f',
+                            800: '#18223c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Effets visuels subtils façon Linear / Vercel */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        .glass-card {
+            background: rgba(13, 19, 34, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(56, 189, 248, 0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -10px rgba(2, 132, 199, 0.2);
+        }
+        /* Barre de défilement personnalisée */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070b14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="bg-dark-950 text-slate-200 font-sans antialiased selection:bg-sky-500/30 selection:text-sky-200 relative overflow-x-hidden">
+
+    <!-- Halo lumineux d'arrière-plan -->
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+    <div class="fixed top-[-15%] left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-sky-500/10 blur-[130px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- =================================================================== -->
+    <!-- BARRE DE NAVIGATION FIXE (STICKY NAVBAR)                            -->
+    <!-- =================================================================== -->
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-dark-950/80 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            
+            <!-- Monogramme / Logo -->
+            <a href="#accueil" class="flex items-center gap-3 group shrink-0">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white font-mono font-bold text-sm shadow-lg shadow-sky-500/20 group-hover:scale-105 transition">
+                    AD.
+                </div>
+                <div class="hidden sm:block">
+                    <span class="font-semibold text-white text-sm tracking-tight block leading-none">Audry Dupin</span>
+                    <span class="text-[11px] font-mono text-sky-400 mt-1 block leading-none">BTS SIO • SISR</span>
+                </div>
+            </a>
+
+            <!-- Liens de navigation Desktop -->
+            <nav class="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.06] p-1 rounded-xl">
+                <a href="#accueil" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition">Accueil</a>
+                <a href="#parcours" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition">Parcours</a>
+                <a href="#realisations" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition">Réalisations</a>
+                <a href="#competences" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition">Compétences acquises</a>
+                <a href="#veille" class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition">Veille Tech</a>
+            </nav>
+
+            <!-- Bouton Contact & Menu Mobile -->
+            <div class="flex items-center gap-2">
+                <a href="#contact" class="px-3.5 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-xs transition shadow-md shadow-sky-500/20 flex items-center gap-1.5">
+                    <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                    <span>Contact</span>
+                </a>
+                <button onclick="toggleMobileMenu()" aria-label="Menu" class="md:hidden p-2 rounded-xl border border-white/10 text-slate-300 hover:text-white hover:bg-white/5 transition">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile déroulant -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-dark-900/95 backdrop-blur-lg px-4 py-3 space-y-1">
+            <a href="#accueil" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5">Accueil</a>
+            <a href="#parcours" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5">Parcours &amp; Certifications</a>
+            <a href="#realisations" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5">Réalisations</a>
+            <a href="#competences" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5">Compétences acquises</a>
+            <a href="#veille" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5">Veille Technologique</a>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28 pb-24">
+
+        <!-- =================================================================== -->
+        <!-- SECTION 1 : HERO / ACCUEIL                                          -->
+        <!-- =================================================================== -->
+        <section id="accueil" class="pt-14 sm:pt-20">
+            <div class="max-w-4xl space-y-6">
+                <!-- Badge Statut -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-400/20 text-sky-300 text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                    BTS SIO • Option SISR • Lycée Chevrollier (Angers)
+                </div>
+
+                <!-- Titre Principal -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
+                    Audry Dupin —
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-400 mt-1">
+                        Systèmes, Réseaux &amp; Cybersécurité
+                    </span>
+                </h1>
+
+                <!-- Sous-titre & Objectif -->
+                <p class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl">
+                    Étudiant en <strong class="text-slate-200 font-medium">2e année de BTS SIO (Solutions d'Infrastructure, Systèmes et Réseaux)</strong> après un Baccalauréat STI2D. Je conçois, déploie et sécurise des architectures réseau segmentées avec pour objectif de poursuivre en <strong class="text-sky-300 font-medium">Bachelor Administration Réseaux &amp; Cybersécurité</strong>.
+                </p>
+
+                <!-- Boutons d'action -->
+                <div class="flex flex-wrap items-center gap-3.5 pt-2">
+                    <button onclick="openModal('modal-vidisante')" class="px-5 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-sm shadow-lg shadow-sky-500/25 transition flex items-center gap-2">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                        <span>Découvrir le projet VIDISANTÉ</span>
+                    </button>
+                    <a href="#competences" class="px-5 py-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-200 font-medium text-sm transition flex items-center gap-2">
+                        <i data-lucide="layers" class="w-4 h-4 text-sky-400"></i>
+                        <span>Voir mes compétences</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Indicateurs Clés (KPI Cards) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-14">
+                <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 shrink-0">
+                        <i data-lucide="network" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white font-mono">8 VLAN</div>
+                        <div class="text-xs text-slate-400 mt-0.5">Architecture multisite cloisonnée (VIDISANTÉ)</div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
+                        <i data-lucide="briefcase" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white font-mono">7 Semaines</div>
+                        <div class="text-xs text-slate-400 mt-0.5">Stage réseaux &amp; télécoms chez Leonix (Paris)</div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white font-mono">ANSSI &amp; Pix</div>
+                        <div class="text-xs text-slate-400 mt-0.5">MOOC SecNumacadémie &amp; compétences numériques</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECTION 2 : PARCOURS & CERTIFICATIONS                               -->
+        <!-- =================================================================== -->
+        <section id="parcours" class="scroll-mt-24 space-y-10">
+            <div class="space-y-2">
+                <span class="text-xs font-mono uppercase tracking-widest text-sky-400">01. Formation &amp; Expériences</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Parcours &amp; Certifications</h2>
+                <p class="text-sm text-slate-400 max-w-2xl">
+                    De la découverte de l'automatisation en STI2D jusqu'au déploiement d'infrastructures réseau sur le terrain à Paris.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                
+                <!-- Colonne Gauche (2/3) : Timeline Verticale -->
+                <div class="lg:col-span-2 glass-card rounded-2xl p-6 sm:p-8">
+                    <div class="relative border-l border-white/10 ml-3 space-y-8">
+                        
+                        <!-- Étape 1 -->
+                        <div class="relative pl-7">
+                            <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-sky-400 ring-4 ring-sky-400/20"></span>
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-base font-bold text-white">BTS SIO — Option SISR</h3>
+                                <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-sky-500/10 text-sky-300 border border-sky-500/20">2025 – 2027</span>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 mt-0.5">Lycée Chevrollier • Angers (49)</div>
+                            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                                Conception d'architectures réseau sécurisées, administration Windows Server &amp; Linux, virtualisation, cybersécurité (référentiels ANSSI) et gestion de projets informatiques.
+                            </p>
+                        </div>
+
+                        <!-- Étape 2 -->
+                        <div class="relative pl-7">
+                            <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-indigo-400 ring-4 ring-indigo-400/20"></span>
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-base font-bold text-white">Stagiaire Technicien Réseaux &amp; Télécoms</h3>
+                                <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">Mai – Juin 2026 (7 sem.)</span>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 mt-0.5">Leonix • Paris 5e (Tuteur : Fouad Nahas)</div>
+                            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                                Déploiement d'infrastructures réseau, fibre optique et Wi-Fi haute densité pour des clients exigeants et événements (Louis Vuitton, Sézane, The Row, Celine, Amiri). Montage de baies redondantes, supervision Meraki et dossiers de production.
+                            </p>
+                        </div>
+
+                        <!-- Étape 3 -->
+                        <div class="relative pl-7">
+                            <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-500"></span>
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-base font-bold text-white">Baccalauréat Technologique STI2D</h3>
+                                <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-400 border border-white/10">2025</span>
+                            </div>
+                            <div class="text-xs font-medium text-slate-400 mt-0.5">Lycée Jean Moulin</div>
+                            <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                                Réalisation de projets techniques en équipe et initiation au codage Python pour l'automatisation.
+                            </p>
+                        </div>
+
+                        <!-- Étape 4 -->
+                        <div class="relative pl-7">
+                            <span class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-600"></span>
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-base font-bold text-white">Expériences professionnelles complémentaires</h3>
+                                <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-white/5 text-slate-400 border border-white/10">2023 – 2025</span>
+                            </div>
+                            <ul class="text-sm text-slate-300 mt-2 space-y-1.5">
+                                <li>• <strong class="text-white font-medium">Agent administratif — DICTYS (Angers, étés 2024-2025) :</strong> Planification des tournées techniciens, accueil téléphonique et traitement de données.</li>
+                                <li>• <strong class="text-white font-medium">Préparateur de commandes — Barrault Horticulture (été 2023) :</strong> Logistique et travail d'équipe sous contrainte de délais.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Colonne Droite (1/3) : Certifications & Objectif -->
+                <div class="space-y-4">
+                    <!-- Carte ANSSI -->
+                    <div class="glass-card rounded-2xl p-6 space-y-3 border-l-2 border-l-emerald-400">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-300 font-mono text-xs font-semibold">Certifié</span>
+                            <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">MOOC SecNumacadémie</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Certification délivrée par l'<strong class="text-slate-200">ANSSI</strong> couvrant la sécurité de l'authentification, la sécurité sur Internet, la sécurité du poste de travail et le nomadisme.
+                        </p>
+                    </div>
+
+                    <!-- Carte Pix -->
+                    <div class="glass-card rounded-2xl p-6 space-y-3 border-l-2 border-l-sky-400">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-md bg-sky-500/10 text-sky-300 font-mono text-xs font-semibold">Certifié</span>
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-sky-400"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Certification Pix</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Validation officielle des compétences numériques : protection des données, sécurité des environnements numériques et traitement de données.
+                        </p>
+                    </div>
+
+                    <!-- Carte Objectif -->
+                    <div class="glass-card rounded-2xl p-6 bg-gradient-to-br from-sky-500/10 to-indigo-500/5 border border-sky-500/20 space-y-2">
+                        <div class="flex items-center gap-2 text-sky-300 text-xs font-mono font-semibold">
+                            <i data-lucide="compass" class="w-4 h-4"></i>
+                            <span>CAP 2027</span>
+                        </div>
+                        <h3 class="text-sm font-bold text-white">Bachelor Admin Réseaux &amp; Cybersécurité</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Poursuite d'études envisagée en alternance afin d'approfondir la défense des infrastructures critiques et le durcissement système.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECTION 3 : RÉALISATIONS (CARTES PRO + MODALES DÉTAILLÉES)          -->
+        <!-- =================================================================== -->
+        <section id="realisations" class="scroll-mt-24 space-y-10">
+            <div class="space-y-2">
+                <span class="text-xs font-mono uppercase tracking-widest text-sky-400">02. Projets &amp; Missions</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Réalisations techniques</h2>
+                <p class="text-sm text-slate-400 max-w-2xl">
+                    Sélectionnez un projet pour explorer l'architecture, les arbitrages de sécurité et les livrables techniques associés.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- PROJET PHARE : VIDISANTÉ (Pleine largeur ou 12 cols mise en avant) -->
+                <article class="lg:col-span-12 glass-card glass-card-hover rounded-2xl p-6 sm:p-8 border-sky-500/25 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-72 h-72 bg-sky-500/10 blur-3xl rounded-full pointer-events-none"></div>
+                    
+                    <div class="relative flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                        <div class="space-y-4 max-w-3xl">
+                            <div class="flex flex-wrap items-center gap-2.5">
+                                <span class="px-3 py-1 rounded-full bg-sky-500/15 border border-sky-400/30 text-sky-300 text-xs font-mono font-semibold">
+                                    Projet Phare • Oral 20/11/2026
+                                </span>
+                                <span class="text-xs font-mono text-slate-400">Architecture &amp; Cybersécurité</span>
+                            </div>
+
+                            <h3 class="text-xl sm:text-2xl font-bold text-white">
+                                Infrastructure Multisite Sécurisée — Projet VIDISANTÉ
+                            </h3>
+
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Conception et déploiement d'une infrastructure réseau cloisonnée reliant le siège de <strong class="text-white">Paris (~80 postes, Bâtiments A et B)</strong> et l'agence de <strong class="text-white">Lyon (~30 postes)</strong>, tout en intégrant le réseau historique existant (<code class="font-mono text-xs bg-white/10 text-sky-300 px-1.5 py-0.5 rounded">VLAN 465 • 192.168.64.0/24</code>).
+                            </p>
+
+                            <!-- Tags technos -->
+                            <div class="flex flex-wrap gap-2 pt-1">
+                                <span class="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">8 VLAN</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">Double Pare-feu</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">Reverse Proxy &amp; MariaDB</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">VPN IPsec &amp; Bastion</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">AD / DNS / NTP</span>
+                                <span class="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">Zabbix &amp; Syslog</span>
+                            </div>
+                        </div>
+
+                        <div class="shrink-0">
+                            <button onclick="openModal('modal-vidisante')" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20">
+                                <span>Explorer le dossier</span>
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- RÉALISATION 2 : STAGE LEONIX -->
+                <article class="lg:col-span-6 glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-md bg-indigo-500/15 border border-indigo-400/25 text-indigo-300 text-xs font-mono">
+                                Stage Entreprise • Paris
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Mai – Juin 2026</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-white">
+                            Déploiement Réseaux &amp; Wi-Fi Événementiel — Leonix
+                        </h3>
+
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Interventions terrain et préparation en atelier pour des maisons de luxe et showrooms : baies redondantes (défilé Louis Vuitton), fibre optique, Wi-Fi (Sézane, The Row, Celine, Amiri), diagnostic passerelle <code class="font-mono text-xs text-slate-300">/31</code> et dossiers de production.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-2 border-t border-white/10">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-xs font-mono text-slate-300">Meraki Dashboard</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-xs font-mono text-slate-300">Fibre &amp; Baies</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-xs font-mono text-slate-300">Testeur Fluke</span>
+                        </div>
+                        <button onclick="openModal('modal-leonix')" class="w-full py-2.5 px-4 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-white text-xs font-semibold transition flex items-center justify-center gap-2">
+                            <span>Explorer le dossier</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-indigo-400"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- RÉALISATION 3 : ADMIN SYSTÈME & SCRIPTING -->
+                <article class="lg:col-span-6 glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between space-y-6">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-mono">
+                                Labo SISR • Lycée Chevrollier
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">2025 – 2026</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-white">
+                            Administration Système, Virtualisation &amp; Scripting
+                        </h3>
+
+                        <p class="text-sm text-slate-400 leading-relaxed">
+                            Mise en œuvre d'environnements virtualisés multi-serveurs : déploiement d'annuaire Active Directory (<code class="font-mono text-xs text-slate-300">vidisante.local</code>), services DNS/DHCP, serveurs Linux, bases MariaDB et automatisation en Python.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-2 border-t border-white/10">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-xs font-mono text-slate-300">Windows Server / AD</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-xs font-mono text-slate-300">Linux</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-xs font-mono text-slate-300">Python &amp; SQL</span>
+                        </div>
+                        <button onclick="openModal('modal-labo')" class="w-full py-2.5 px-4 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-white text-xs font-semibold transition flex items-center justify-center gap-2">
+                            <span>Explorer le dossier</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-emerald-400"></i>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECTION 4 : COMPÉTENCES ACQUISES (4 PÔLES MÉTIERS)                  -->
+        <!-- =================================================================== -->
+        <section id="competences" class="scroll-mt-24 space-y-10">
+            <div class="space-y-2">
+                <span class="text-xs font-mono uppercase tracking-widest text-sky-400">03. Savoir-faire Techniques</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Compétences acquises</h2>
+                <p class="text-sm text-slate-400 max-w-2xl">
+                    Compétences développées et validées en environnement de laboratoire (projet VIDISANTÉ) et en conditions réelles chez Leonix.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Pôle 1 : Réseaux & Infrastructures -->
+                <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-5">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-400/25 flex items-center justify-center text-sky-400 shrink-0">
+                                <i data-lucide="network" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Réseaux &amp; Infrastructures</h3>
+                                <span class="text-xs text-slate-400">Conception logique &amp; déploiement terrain</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-mono text-sky-400 bg-sky-500/10 px-2.5 py-1 rounded-md">Avancé</span>
+                    </div>
+
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                            <span>Segmentation <strong class="text-white font-medium">VLAN (802.1Q)</strong>, routage inter-VLAN et plans d'adressage IPv4 (<code class="font-mono text-xs text-sky-300">/24</code>, <code class="font-mono text-xs text-sky-300">/31</code>)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                            <span>Interconnexion chiffrée par <strong class="text-white font-medium">VPN IPsec &amp; SSL</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                            <span>Wi-Fi professionnel, supervision <strong class="text-white font-medium">Meraki Dashboard</strong>, fibre optique &amp; brassage</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
+                            <span>Diagnostic physique et logique (<strong class="text-white font-medium">testeur Fluke</strong>, analyse de passerelle)</span>
+                        </li>
+                    </ul>
+
+                    <div class="pt-3 border-t border-white/10 flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">VLAN 802.1Q</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Cisco Meraki</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">VPN IPsec</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Fluke</span>
+                    </div>
+                </div>
+
+                <!-- Pôle 2 : Cybersécurité & Cloisonnement -->
+                <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-5">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/15 border border-indigo-400/25 flex items-center justify-center text-indigo-400 shrink-0">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Cybersécurité &amp; Cloisonnement</h3>
+                                <span class="text-xs text-slate-400">Défense en profondeur &amp; accès distants</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md">Opérationnel</span>
+                    </div>
+
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-white font-medium">Double barrière pare-feu</strong> (<code class="font-mono text-xs text-indigo-300">FW-EXT</code> / <code class="font-mono text-xs text-indigo-300">FW-INT</code>) et filtrage au moindre privilège</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i>
+                            <span>Architecture <strong class="text-white font-medium">DMZ &amp; Reverse Proxy HTTPS</strong> (isolation des bases de données)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i>
+                            <span>Sécurisation de l'administration par <strong class="text-white font-medium">Bastion (SSH/RDP)</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i>
+                            <span>Durcissement selon les <strong class="text-white font-medium">guides ANSSI</strong> &amp; gestion de secrets chiffrée (<strong class="text-white font-medium">KeePass</strong>)</span>
+                        </li>
+                    </ul>
+
+                    <div class="pt-3 border-t border-white/10 flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Pare-feu L3/L4</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Bastion SSH/RDP</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Reverse Proxy</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">ANSSI / KeePass</span>
+                    </div>
+                </div>
+
+                <!-- Pôle 3 : Systèmes & Services -->
+                <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-5">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-400/25 flex items-center justify-center text-emerald-400 shrink-0">
+                                <i data-lucide="server" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Systèmes &amp; Services</h3>
+                                <span class="text-xs text-slate-400">Administration serveurs &amp; virtualisation</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Opérationnel</span>
+                    </div>
+
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-white font-medium">Windows Server :</strong> Active Directory (<code class="font-mono text-xs text-emerald-300">vidisante.local</code>), DNS, DHCP et GPO</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span>Administration <strong class="text-white font-medium">Linux</strong> (Debian/Ubuntu), gestion des services et permissions</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span>Déploiement et administration de bases de données <strong class="text-white font-medium">MariaDB / SQL</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-white font-medium">Virtualisation :</strong> dimensionnement vCPU/RAM et isolation par VM dédiée</span>
+                        </li>
+                    </ul>
+
+                    <div class="pt-3 border-t border-white/10 flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Active Directory</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Linux</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">MariaDB / SQL</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Virtualisation</span>
+                    </div>
+                </div>
+
+                <!-- Pôle 4 : Supervision, Sauvegarde & Automatisation -->
+                <div class="glass-card rounded-2xl p-6 sm:p-7 space-y-5">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-400/25 flex items-center justify-center text-amber-400 shrink-0">
+                                <i data-lucide="activity" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white">Supervision, Sauvegarde &amp; Automatisation</h3>
+                                <span class="text-xs text-slate-400">Maintien en condition opérationnelle</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-md">Opérationnel</span>
+                    </div>
+
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                            <span>Monitoring actif sous <strong class="text-white font-medium">Zabbix</strong> (SNMPv3, agents, ICMP, seuils CPU/RAM/disque)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                            <span>Centralisation des journaux <strong class="text-white font-medium">Syslog</strong> &amp; synchronisation <strong class="text-white font-medium">NTP unique</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                            <span>Politique de <strong class="text-white font-medium">sauvegarde, externalisation</strong> et tests de restauration</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                            <span>Scripting <strong class="text-white font-medium">Python</strong> &amp; rédaction de <strong class="text-white font-medium">dossiers de production</strong></span>
+                        </li>
+                    </ul>
+
+                    <div class="pt-3 border-t border-white/10 flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Zabbix</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Syslog &amp; NTP</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Python</span>
+                        <span class="px-2.5 py-1 rounded-md bg-white/[0.04] text-xs font-mono text-slate-300">Dossiers Tech</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECTION 5 : VEILLE TECHNOLOGIQUE                                    -->
+        <!-- =================================================================== -->
+        <section id="veille" class="scroll-mt-24 space-y-10">
+            <div class="space-y-2">
+                <span class="text-xs font-mono uppercase tracking-widest text-sky-400">04. Développement Professionnel</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Veille Technologique</h2>
+                <p class="text-sm text-slate-400 max-w-2xl">
+                    Démarche continue d'analyse des menaces et des bonnes pratiques de sécurisation des infrastructures.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-8">
+                <!-- En-tête du sujet -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
+                    <div class="space-y-1.5">
+                        <span class="text-xs font-mono text-sky-400">Thématique étudiée (Dossier C.2)</span>
+                        <h3 class="text-xl font-bold text-white">
+                            Sécurisation des accès d'administration par bastion et authentification renforcée
+                        </h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 shrink-0">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300 flex items-center gap-1.5">
+                            <i data-lucide="rss" class="w-3.5 h-3.5 text-sky-400"></i> Feedly
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300 flex items-center gap-1.5">
+                            <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-400"></i> CERT-FR
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300 flex items-center gap-1.5">
+                            <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-400"></i> ANSSI-PA-022
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 3 Colonnes de synthèse -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2.5">
+                        <div class="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">1. Constat &amp; Enjeux</div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            L'exposition directe des ports d'administration (<code class="font-mono text-xs text-slate-200">SSH</code>, <code class="font-mono text-xs text-slate-200">RDP</code>, interfaces web) constitue un vecteur d'attaque majeur permettant le rebond latéral en cas de compromission d'un poste bureautique.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2.5">
+                        <div class="text-xs font-mono font-semibold text-indigo-400 uppercase tracking-wider">2. Recommandations clés</div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Selon le guide <strong class="text-white font-medium">ANSSI-PA-022</strong>, il faut centraliser les rebonds sur un <strong class="text-white font-medium">serveur bastion durci</strong>, imposer des comptes nominatifs, activer le MFA dès que possible et tracer toutes les sessions.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-xl bg-sky-500/[0.06] border border-sky-500/20 space-y-2.5">
+                        <div class="text-xs font-mono font-semibold text-emerald-400 uppercase tracking-wider">3. Application sur VIDISANTÉ</div>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Déploiement de <code class="font-mono text-xs text-sky-300">SRV-BASTION</code> dans le <code class="font-mono text-xs text-sky-300">VLAN 10</code> comme point de passage unique après VPN, couplé à sa supervision Zabbix et à une procédure de reprise car il devient un équipement critique.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- SECTION 6 : CONTACT & FOOTER                                        -->
+        <!-- =================================================================== -->
+        <section id="contact" class="scroll-mt-24 pt-6 border-t border-white/10">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div class="space-y-2">
+                    <span class="text-xs font-mono uppercase tracking-widest text-sky-400">05. Contact</span>
+                    <h2 class="text-2xl font-bold text-white">Échanger autour de mon profil</h2>
+                    <p class="text-sm text-slate-400 max-w-xl">
+                        Disponible pour présenter mes réalisations techniques lors de l'oral du 20 novembre 2026 ou pour échanger sur une opportunité d'alternance en Bachelor Réseaux &amp; Cybersécurité.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row md:flex-col items-stretch sm:items-center md:items-end gap-3 shrink-0 w-full md:w-auto">
+                    <div class="flex items-center gap-2">
+                        <a href="mailto:audry.dupin@gmail.com" class="px-4 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-xs sm:text-sm transition flex items-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span>audry.dupin@gmail.com</span>
+                        </a>
+                        <button onclick="copyEmail()" id="copy-btn" title="Copier l'adresse email" class="p-2.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-slate-300 hover:text-white transition flex items-center gap-1.5 text-xs font-mono">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                            <span id="copy-label" class="hidden sm:inline">Copier</span>
+                        </button>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-4 text-xs text-slate-400 font-mono">
+                        <span class="flex items-center gap-1.5">
+                            <i data-lucide="phone" class="w-3.5 h-3.5 text-sky-400"></i> 06 32 29 88 20
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-sky-400"></i> Angers / La Possonnière (49)
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mt-8 text-center text-xs text-slate-500 font-mono">
+                © 2026 Audry Dupin — Portfolio BTS SIO Option SISR • Lycée Chevrollier
+            </footer>
+        </section>
+
+    </main>
+
+    <!-- ======================================================================= -->
+    <!-- MODALE 1 : DOSSIER COMPLET PROJET VIDISANTÉ                             -->
+    <!-- ======================================================================= -->
+    <div id="modal-vidisante" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeModalOnBackdrop(event, 'modal-vidisante')">
+        <div class="bg-dark-900 border border-white/15 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[88vh] flex flex-col overflow-hidden">
+            
+            <!-- En-tête Modale -->
+            <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-dark-950/60">
+                <div>
+                    <span class="text-xs font-mono text-sky-400">Dossier Technique A, B &amp; C • Multisite Paris / Lyon</span>
+                    <h3 class="text-lg sm:text-xl font-bold text-white">Infrastructure Sécurisée VIDISANTÉ</h3>
+                </div>
+                <button onclick="closeModal('modal-vidisante')" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Onglets internes à la modale -->
+            <div class="px-6 pt-2 border-b border-white/10 flex gap-2 overflow-x-auto bg-dark-900">
+                <button onclick="switchVidiTab('tab-vlan')" id="btn-tab-vlan" class="vidi-tab px-3.5 py-2.5 text-xs font-semibold border-b-2 border-sky-400 text-sky-400 whitespace-nowrap transition">
+                    1. Architecture &amp; Plan d'adressage
+                </button>
+                <button onclick="switchVidiTab('tab-choix')" id="btn-tab-choix" class="vidi-tab px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition">
+                    2. 3 Arbitrages &amp; Options écartées (ANSSI)
+                </button>
+                <button onclick="switchVidiTab('tab-tests')" id="btn-tab-tests" class="vidi-tab px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-400 hover:text-slate-200 whitespace-nowrap transition">
+                    3. Supervision &amp; 8 Tests de validation
+                </button>
+            </div>
+
+            <!-- Contenu scrollable de la modale -->
+            <div class="p-6 overflow-y-auto space-y-6 text-sm">
+                
+                <!-- ONGLET 1 : PLAN D'ADRESSAGE -->
+                <div id="tab-vlan" class="vidi-panel space-y-4">
+                    <div class="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        <strong class="text-white">Contexte &amp; Existant :</strong> Raccordement du siège parisien (~80 postes répartis sur les bâtiments A et B) et de l'agence de Lyon (~30 postes), avec conservation obligatoire du réseau utilisateurs historique (<code class="font-mono text-sky-300">VLAN 465</code>).
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-white/10">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-white/[0.04] text-slate-300 border-b border-white/10 font-mono">
+                                    <th class="py-3 px-4">VLAN</th>
+                                    <th class="py-3 px-4">Sous-réseau</th>
+                                    <th class="py-3 px-4">Passerelle</th>
+                                    <th class="py-3 px-4">Équipements &amp; Rôle</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/[0.06] text-slate-300">
+                                <tr>
+                                    <td class="py-2.5 px-4 font-mono text-sky-400 font-semibold">VLAN 10</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.10.0/24</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.10.1</td>
+                                    <td class="py-2.5 px-4">Administration — <code class="text-slate-200">SRV-BASTION</code> (.10)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-mono text-sky-400 font-semibold">VLAN 20</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.20.0/24</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.20.1</td>
+                                    <td class="py-2.5 px-4">DMZ Exposée — <code class="text-slate-200">SRV-REVERSE-PROXY</code> (.10), <code class="text-slate-200">SRV-WEB</code> (.20)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-mono text-sky-400 font-semibold">VLAN 30</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.30.0/24</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.30.1</td>
+                                    <td class="py-2.5 px-4">Zone Données (ultra-protégée) — <code class="text-slate-200">SRV-BDD</code> MariaDB (.10)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-mono text-sky-400 font-semibold">VLAN 40</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.40.0/24</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.40.1</td>
+                                    <td class="py-2.5 px-4">Services Socles — <code class="text-slate-200">SRV-AD-DNS-NTP</code> vidisante.local (.10)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-mono text-sky-400 font-semibold">VLAN 50</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.50.0/24</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.50.1</td>
+                                    <td class="py-2.5 px-4">Supervision &amp; Logs — <code class="text-slate-200">SRV-ZABBIX</code> (.10), <code class="text-slate-200">SRV-SYSLOG</code> (.20)</td>
+                                </tr>
+                                <tr class="bg-sky-500/[0.05]">
+                                    <td class="py-2.5 px-4 font-mono text-emerald-400 font-semibold">VLAN 465</td>
+                                    <td class="py-2.5 px-4 font-mono">192.168.64.0/24</td>
+                                    <td class="py-2.5 px-4 font-mono">192.168.64.254</td>
+                                    <td class="py-2.5 px-4">Postes utilisateurs Paris (existant conservé)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-mono text-sky-400 font-semibold">VLAN 70</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.70.0/24</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.70.1</td>
+                                    <td class="py-2.5 px-4">Bâtiment B Services — <code class="text-slate-200">SRV-WIKI</code> (.10), <code class="text-slate-200">SRV-ARCHIVES</code> (.20)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-mono text-sky-400 font-semibold">VLAN 71</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.71.0/24</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.71.1</td>
+                                    <td class="py-2.5 px-4">Bâtiment B — Segment IoT préparatoire isolé et vide</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-4 font-mono text-sky-400 font-semibold">VLAN 80</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.80.0/24</td>
+                                    <td class="py-2.5 px-4 font-mono">10.20.80.1</td>
+                                    <td class="py-2.5 px-4">Sauvegarde &amp; Externalisation — <code class="text-slate-200">SRV-BACKUP</code> (.10)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ONGLET 2 : 3 ARBITRAGES & OPTIONS ÉCARTÉES -->
+                <div id="tab-choix" class="vidi-panel hidden space-y-4">
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-white">1. Double barrière de filtrage + Reverse Proxy</h4>
+                            <span class="text-xs font-mono text-sky-400">ANSSI-PA-054</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            <strong class="text-emerald-400">Choix retenu :</strong> Séparation entre un pare-feu de bordure (<code class="font-mono text-xs">FW-EXT</code>) et un pare-feu interne (<code class="font-mono text-xs">FW-INT</code>) encadrant la DMZ. Le flux HTTPS (TCP 443) passe par un Reverse Proxy avant d'atteindre le serveur Web, seul autorisé à interroger MariaDB (TCP 3306).<br>
+                            <strong class="text-rose-400">Option écartée :</strong> Pare-feu unique (monolithique), écarté car une compromission de la DMZ ou d'une règle externe exposerait directement le LAN et les bases de données.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-white">2. Interconnexion Lyon via IPsec sans contrôleur de domaine local</h4>
+                            <span class="text-xs font-mono text-indigo-400">Gestion des risques</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            <strong class="text-emerald-400">Choix retenu :</strong> Liaison chiffrée IPsec entre <code class="font-mono text-xs">FW-INT</code> et <code class="font-mono text-xs">FW-LYON</code> avec segmentation par VLAN des services locaux (R&amp;D, avant-vente, formation) et authentification centralisée sur l'AD de Paris.<br>
+                            <strong class="text-rose-400">Option écartée :</strong> Déploiement d'un RODC local à Lyon, écarté pour limiter la surface d'attaque et la complexité d'administration (risque résiduel de coupure du tunnel formalisé et accepté).
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-white">3. Accès distant VPN couplé à un serveur Bastion obligatoire</h4>
+                            <span class="text-xs font-mono text-emerald-400">ANSSI-PA-022</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            <strong class="text-emerald-400">Choix retenu :</strong> Tunnel VPN conditionné à l'authentification AD donnant uniquement accès à <code class="font-mono text-xs">SRV-BASTION</code> (VLAN 10) en SSH/RDP chiffré, et stockage des secrets dans KeePass.<br>
+                            <strong class="text-rose-400">Option écartée :</strong> Administration directe (SSH/RDP) depuis les postes utilisateurs ou depuis le tunnel VPN vers les serveurs internes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ONGLET 3 : SUPERVISION & GRILLE DE TESTS -->
+                <div id="tab-tests" class="vidi-panel hidden space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                        <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/10">
+                            <strong class="text-white block mb-1">Supervision &amp; Horodatage</strong>
+                            Zabbix (<code class="font-mono text-xs text-sky-300">10.20.50.10</code>) en mode poll (SNMPv3, agent, ICMP) + Syslog (<code class="font-mono text-xs text-sky-300">10.20.50.20</code>) en mode push, synchronisés sur le serveur NTP unique du VLAN 40.
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/10">
+                            <strong class="text-white block mb-1">Sauvegardes &amp; Secrets</strong>
+                            Sauvegarde centralisée sur <code class="font-mono text-xs text-sky-300">SRV-BACKUP</code> (VLAN 80) avec externalisation et gestionnaire de mots de passe chiffré (KeePass).
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-white/10">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-white/[0.04] text-slate-300 border-b border-white/10 font-mono">
+                                    <th class="py-2.5 px-4">Contrôle de validation</th>
+                                    <th class="py-2.5 px-4">Résultat attendu</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/[0.06] text-slate-300">
+                                <tr><td class="py-2 px-4 font-medium text-white">1. Publication Web</td><td class="py-2 px-4">HTTPS (443) accessible depuis l'extérieur, ports non prévus fermés.</td></tr>
+                                <tr><td class="py-2 px-4 font-medium text-white">2. Cloisonnement DMZ-BDD</td><td class="py-2 px-4">Base MariaDB inaccessible depuis Internet ; seul le serveur Web la joint (3306).</td></tr>
+                                <tr><td class="py-2 px-4 font-medium text-white">3. VPN et Bastion</td><td class="py-2 px-4">Connexion VPN puis rebond Bastion fonctionnels ; administration directe bloquée.</td></tr>
+                                <tr><td class="py-2 px-4 font-medium text-white">4. VLAN Bâtiment B</td><td class="py-2 px-4">Seuls les flux autorisés depuis le VLAN 70 aboutissent ; VLAN 71 IoT isolé.</td></tr>
+                                <tr><td class="py-2 px-4 font-medium text-white">5. Supervision Zabbix</td><td class="py-2 px-4">L'arrêt d'un service de test déclenche immédiatement une alerte Zabbix.</td></tr>
+                                <tr><td class="py-2 px-4 font-medium text-white">6. Journalisation Syslog</td><td class="py-2 px-4">Remontée des événements dans Syslog avec un horodatage NTP cohérent.</td></tr>
+                                <tr><td class="py-2 px-4 font-medium text-white">7. Sauvegarde-Restauration</td><td class="py-2 px-4">Restauration réussie et documentée d'une sauvegarde sur un emplacement de test.</td></tr>
+                                <tr><td class="py-2 px-4 font-medium text-white">8. Site de Lyon (IPsec)</td><td class="py-2 px-4">Tunnel IPsec établi ; seuls les sous-réseaux autorisés communiquent.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- MODALE 2 : STAGE LEONIX (PARIS)                                         -->
+    <!-- ======================================================================= -->
+    <div id="modal-leonix" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeModalOnBackdrop(event, 'modal-leonix')">
+        <div class="bg-dark-900 border border-white/15 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden">
+            <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-dark-950/60">
+                <div>
+                    <span class="text-xs font-mono text-indigo-400">11 Mai – 26 Juin 2026 • Paris 5e</span>
+                    <h3 class="text-lg font-bold text-white">Stage Technicien Réseaux &amp; Télécoms — Leonix</h3>
+                </div>
+                <button onclick="closeModal('modal-leonix')" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-4 text-sm text-slate-300">
+                <p class="leading-relaxed">
+                    Au sein de l'entreprise <strong class="text-white">Leonix</strong> (spécialisée dans les infrastructures réseau permanentes et événementielles pour le secteur du luxe), j'ai accompagné les techniciens et mon tuteur <strong class="text-white">Fouad Nahas</strong> en atelier et sur site :
+                </p>
+
+                <div class="space-y-3">
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                        <strong class="text-white block mb-1">Préparation de baies redondantes (Défilé Louis Vuitton)</strong>
+                        Montage et brassage de deux routeurs et deux commutateurs en redondance haute disponibilité pour assurer la continuité de service lors d'un événement majeur.
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                        <strong class="text-white block mb-1">Déploiements Fibre optique &amp; Wi-Fi haute densité</strong>
+                        Tirage de câbles RJ45/fibre, pose et raccordement de bornes Wi-Fi (projets <strong class="text-indigo-300">Sézane, The Row, Celine, Amiri, Magnetik, Sacai</strong>) et validation au testeur <strong class="text-white">Fluke</strong>.
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                        <strong class="text-white block mb-1">Diagnostic réseau &amp; Dossiers de production</strong>
+                        Résolution d'un incident de mise en service fibre (analyse de ports inactifs et d'un masque de passerelle en <code class="font-mono text-xs text-sky-300">/31</code>), supervision sur <strong class="text-white">Meraki Dashboard</strong> et rédaction des dossiers de production clients.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- MODALE 3 : ADMIN SYSTÈME & SCRIPTING                                    -->
+    <!-- ======================================================================= -->
+    <div id="modal-labo" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeModalOnBackdrop(event, 'modal-labo')">
+        <div class="bg-dark-900 border border-white/15 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden">
+            <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-dark-950/60">
+                <div>
+                    <span class="text-xs font-mono text-emerald-400">Travaux Pratiques &amp; Labo • Lycée Chevrollier</span>
+                    <h3 class="text-lg font-bold text-white">Administration Système, Virtualisation &amp; Scripting</h3>
+                </div>
+                <button onclick="closeModal('modal-labo')" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-4 text-sm text-slate-300">
+                <p class="leading-relaxed">
+                    Mise en pratique des fondamentaux de l'administration système et du développement d'outils d'automatisation au cours de ma formation BTS SIO SISR :
+                </p>
+
+                <div class="space-y-3">
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                        <strong class="text-white block mb-1">Infrastructures Windows Server &amp; Active Directory</strong>
+                        Déploiement de contrôleurs de domaine (<code class="font-mono text-xs text-emerald-300">vidisante.local</code>), gestion des unités d'organisation, stratégies de groupe (GPO), résolution DNS et attribution dynamique DHCP.
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                        <strong class="text-white block mb-1">Serveurs Linux &amp; Bases de données</strong>
+                        Installation et durcissement de machines virtuelles Linux, déploiement de services réseau et gestion de bases relationnelles sous <strong class="text-white">MariaDB / SQL</strong>.
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                        <strong class="text-white block mb-1">Automatisation en Python</strong>
+                        Conception de scripts <strong class="text-white">Python</strong> (initiés en Bac STI2D et approfondis en BTS) pour l'automatisation de tâches d'administration et le traitement de données.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- SCRIPTS INTERACTIFS                                                     -->
+    <!-- ======================================================================= -->
+    <script>
+        // Initialisation des icônes Lucide
+        lucide.createIcons();
+
+        // Menu mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Ouverture / Fermeture des modales
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function closeModalOnBackdrop(event, modalId) {
+            if (event.target.id === modalId) {
+                closeModal(modalId);
+            }
+        }
+
+        // Fermeture avec la touche Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                ['modal-vidisante', 'modal-leonix', 'modal-labo'].forEach(id => closeModal(id));
+            }
+        });
+
+        // Navigation par onglets à l'intérieur de la modale VIDISANTÉ
+        function switchVidiTab(panelId) {
+            document.querySelectorAll('.vidi-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            document.querySelectorAll('.vidi-tab').forEach(btn => {
+                btn.classList.remove('border-sky-400', 'text-sky-400');
+                btn.classList.add('border-transparent', 'text-slate-400');
+            });
+
+            document.getElementById(panelId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + panelId);
+            activeBtn.classList.remove('border-transparent', 'text-slate-400');
+            activeBtn.classList.add('border-sky-400', 'text-sky-400');
+        }
+
+        // Copie rapide de l'email (compatible iFrame / Sandbox)
+        function copyEmail() {
+            const email = 'audry.dupin@gmail.com';
+            const tempInput = document.createElement('input');
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                const label = document.getElementById('copy-label');
+                const btn = document.getElementById('copy-btn');
+                if (label) label.textContent = 'Copié !';
+                btn.classList.add('border-emerald-400/50', 'text-emerald-300');
+                setTimeout(() => {
+                    if (label) label.textContent = 'Copier';
+                    btn.classList.remove('border-emerald-400/50', 'text-emerald-300');
+                }, 2000);
+            } catch (err) {
+                console.error('Erreur lors de la copie', err);
+            }
+            document.body.removeChild(tempInput);
+        }
+    </script>
+</body>
+</html>
